@@ -1,0 +1,20 @@
+bed
+bench
+bicycle
+book
+bottle
+bowl
+chair
+clock
+couch
+dining table
+laptop
+microwave
+oven
+potted plant
+refrigerator
+sink
+toaster
+toilet
+vase
+wine glass

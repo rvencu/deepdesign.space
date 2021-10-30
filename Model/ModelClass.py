@@ -2,8 +2,8 @@ import pickle as pk
 import numpy as np
 import os
 from PIL import Image
-from sklearn.linear_model import LogisticRegression
-from sklearn.ensemble import GradientBoostingClassifier
+#from sklearn.linear_model import LogisticRegression
+#from sklearn.ensemble import GradientBoostingClassifier
 from keras.models import load_model
 import cv2
 
@@ -14,7 +14,8 @@ class inception_retrain(object):
     def __init__(self):
         self.img=None
         self.model=None
-        self.InV3model=None
+        #self.InV3model=None
+        self.InRNV2model=None
 
     def _load_image(self,img):
         '''Takes an image
@@ -30,14 +31,17 @@ class inception_retrain(object):
     def _feature_extraction_inception(self,img):
         image=self._load_image(img)
         self.img=image
-        features=self.InV3model.predict(image)
+        #features=self.InV3model.predict(image)
+        features=self.InRNV2model.predict(image)
         return features
 
     def _load_model(self):
         if self.model is None:
-            self.model=load_model('inV3_last_layer.h5')
-        if self.InV3model is None:
-            self.InV3model=load_model("inception.h5")
+            self.model=load_model('InRNV2_last_layer.h5')
+        #if self.InV3model is None:
+        #    self.InV3model=load_model("inception.h5")
+        if self.InRNV2model is None:
+            self.InRNV2model=load_model("InRNV2.h5")
 
     def predict(self,img):
         '''Takes an imagebbb
